@@ -28,9 +28,13 @@ def connect(host='http://google.com'):
         print('not connected to internet')
         return False
 
-
+toast=ToastNotifier()
+toast.show_toast('Start File','GET Start',duration=30)
+os.chdir(r'C:\Users\rober\desktop\Air Quality Monitor\Sensor')
+print('等待網路連線中')
 while True:
     if connect():
+        print('連線成功')
         break
     time.sleep(5)
 
@@ -63,9 +67,6 @@ def main():
     
     
 if __name__ == '__main__':
-    toast=ToastNotifier()
-    toast.show_toast('Start File','GET Start',duration=30)
-    os.chdir(r'C:\Users\rober\desktop\Air Quality Monitor\Sensor')
     while True:
         try:
             main()
