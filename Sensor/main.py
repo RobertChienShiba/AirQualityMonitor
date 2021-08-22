@@ -7,6 +7,10 @@ Created on Fri Aug 20 16:34:24 2021
 
 import serial  # 引用pySerial模組
 import time
+import pywintypes
+from win10toast import ToastNotifier
+import os
+        
 
 # db
 from db_wrapper import DBWrapper
@@ -59,6 +63,9 @@ def main():
     
     
 if __name__ == '__main__':
+    toast=ToastNotifier()
+    toast.show_toast('Start File','GET Start',duration=30)
+    os.chdir(r'C:\Users\rober\desktop\Air Quality Monitor\Sensor')
     while True:
         try:
             main()
