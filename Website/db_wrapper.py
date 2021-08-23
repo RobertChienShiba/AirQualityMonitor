@@ -10,6 +10,11 @@ from pymongo import MongoClient
 from pprint import pprint
 from utils import *
 import pytz
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 days_back = -0.5
 range = 2.2
@@ -19,7 +24,7 @@ search = 0
 
 class DbWrapper:
     def __init__(self):
-        self.client = MongoClient('mongodb+srv://Robert:CKekR4fP1ZUTf4pj@cluster0.xur0l.mongodb.net/air?retryWrites=true&w=majority')
+        self.client = MongoClient('mongodb+srv://Robert:{}@cluster0.xur0l.mongodb.net/air?retryWrites=true&w=majority'.format(os.getenv('MONGODB_PASSWORDS')))
         self.db = self.client.air
 
 
